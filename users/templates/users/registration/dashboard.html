@@ -1,0 +1,32 @@
+<!-- dashboard.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Dashboard</title>
+</head>
+<body>
+    <h1>Welcome, {{ user.username }}!</h1>
+    
+    <div>
+        <h2>Your Profile</h2>
+        <!-- Display user profile information -->
+        <p>Name: {{ user_profile.name }}</p>
+        <p>Email: {{ user.email }}</p>
+        <!-- Add more user profile fields as needed -->
+    </div>
+
+    <!-- Add more dashboard sections and user-specific data here -->
+
+    <div>
+        <h2>Your Tasks</h2>
+        <!-- Display user-specific tasks or data -->
+        <ul>
+            <li>Task 1</li>
+            <li>Task 2</li>
+            <!-- Add user-specific task items here -->
+        </ul>
+    </div>
+    
+    <!-- Add more dashboard sections and user-specific data here -->
+</body>
+</html>
