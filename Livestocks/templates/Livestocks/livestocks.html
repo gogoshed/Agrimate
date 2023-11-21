@@ -1,0 +1,106 @@
+{% extends 'users/base.html' %}
+
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>List of Livestock</title>
+        <!-- Include Chart.js from a CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+        <link rel="stylesheet" type="text/css" href="{% static 'C:\Django_projects\djangoenv\Scripts\Greenfarmer\users\static\styles.css' %}">
+</head>
+<body>    
+
+    <div class="card">
+        <table>
+            <a href="{% url 'create-livestock' %}"class="button1">create</a>
+            <tr>
+                <th>Name</th>
+                <th>Species</th>
+                <th>Breed</th>
+                <th>Date of Birth</th>
+                <th>Gender</th>
+                <th>Health Status</th>
+                <th>Vaccination Records</th>
+                <th>Sire</th>
+                <th>Dam</th>
+                <th>Action</th>
+            </tr>
+
+            {% for livestock in livestock|slice:"-3:" %}
+                <tr>
+                    <td>{{ livestock.name }}</td>
+                    <td>{{ livestock.species }}</td>
+                    <td>{{ livestock.breed }}</td>
+                    <td>{{ livestock.date_of_birth }}</td>
+                    <td>{{ livestock.gender }}</td>
+                    <td>{{ livestock.health_status }}</td>
+                    <td>{{ livestock.vaccination_records }}</td>
+                    <td>{{ livestock.sire }}</td>
+                    <td>{{ livestock.dam }}</td>
+                    <td><a href="{% url 'update-livestock' livestock.id %}"class="button">Update</a></td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="11">No livestock available.</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="chart">
+        <canvas id="livestockChart" width="400" height="200"></canvas>
+    </div>
+
+    <a href="{% url 'Lhome'  %}">Back to Livestock List</a>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Retrieve data from the server using AJAX
+            fetch("{% url 'livestock-chart-data' %}")
+                .then(response => response.json())
+                .then(data => {
+                    // Create the chart
+                    var ctx = document.getElementById('livestockChart').getContext('2d');
+                    var livestockChart = new Chart(ctx, {
+                        type: 'bar',  // You can choose the chart type (bar, line, pie, etc.)
+                        data: {
+                            labels: data.labels,
+                            datasets: [{
+                                label: 'Age in Months',
+                                data: data.data,
+                                backgroundColor: [
+                                    'rgba(75, 192, 192, 0.6)',
+                                    'rgba(255, 99, 132, 0.6)',
+                                    'rgba(255, 205, 86, 0.6)',
+                                    'rgba(54, 162, 235, 0.6)',
+                                    'rgba(153, 102, 255, 0.6)',
+                                    'rgba(255, 159, 64, 0.6)'
+                                ],  // Chart color
+                                borderColor: 'rgba(255, 255, 255, 1)',  // Border color
+                                borderWidth: 9,
+                            }]
+                        },
+                        options: {
+                            position: 'right',
+                            labels: {
+                                fontSize: 14,
+                                fontFamily: 'Arial',
+
+                            },
+                            // Additional chart options and configurations
+                        }
+                    });
+                });
+        });
+
+    </script>
+    
+
+</body>
+</html>
+
+{% endblock content %}

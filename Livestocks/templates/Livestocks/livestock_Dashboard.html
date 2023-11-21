@@ -1,0 +1,292 @@
+{% extends 'users/base.html' %}
+
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>List of Livestock</title>
+        <!-- Include Chart.js from a CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+        
+    </head>
+
+    <style>
+        .body{
+            display: flex;
+            overflow-y: scroll; /* This makes the page vertically scrollable */
+            margin: 0; /* Remove default margin to ensure full height */
+        }
+
+
+        .card1 {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            width: 100%;
+            height: 40vh;
+            margin: 20px;
+            max-width: 500px; /* Set a max-width for responsiveness */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: auto;
+        }
+
+
+
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            width: 100%;
+            margin: 20px;
+            max-width: 600px; /* Set a max-width for responsiveness */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: auto; /*Add this to enable scrolling if the content overflows */
+            height: 40vh;
+        }
+
+
+        table {
+            /* width: 50%; */
+            border-collapse: collapse;
+            margin-top: 5px;
+            margin-bottom: 0px;
+            max-width: 600px; /* Set a max-width for responsiveness */
+        }
+    
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+            font-size: 10px;
+        }
+    
+        th {
+            background-color: #f2f2f2;
+        }
+    
+        .button1, .button {
+            display: inline-block;
+            padding: 10px 15px;
+            text-decoration: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            width: 80px;
+        }
+    
+        .button1 {
+            display: inline-block;
+            padding: 10px 15px;
+            text-decoration: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            margin: 10px;
+            width: 570px;
+            padding-left: 285px;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+
+
+        .card-container{
+            display: flex;
+            margin-top: 20px;
+        }
+
+
+        /* Style the navigation menu */
+        .navigation {
+            padding-left: 300px;
+        }
+
+
+        .navigation ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            margin-top: 10px; /* Adjust the negative margin to shift the content up */
+        }
+        
+        .navigation li {
+            margin-right: 20px; /* Add spacing between menu items */
+            flex: 2;
+        }
+        
+        .navigation a {
+            text-decoration: none;
+            color: #242323; /* Change link text color to your preference */
+            flex: 2;
+            
+        }
+        
+        /* Style the login and logout buttons */
+        #login, #logout {
+            background-color: #007bff; /* Change the button background color to your preference */
+            color: #fff; /* Change the button text color to your preference */
+            border: none;
+            padding: 10px 20px; /* Adjust padding to your preference */
+            cursor: pointer;
+            margin-left: 10px; /* Add spacing between buttons */
+            
+        }
+        
+        #login:hover, #logout:hover {
+            background-color: #0056b3; /* Change the button background color on hover */
+        }
+        
+
+        .clicks {
+            padding-left: 250px;
+        }
+
+
+        .header {
+            /* background-color: #333; Change the background color to your preference */
+            color: #e2e2e2; /* Change the text color to your preference */
+            padding: 10px; /* Add padding for better spacing */
+            display: flex;
+            justify-content: space-between;
+            /* align-items: center; */
+            padding-top: 0px;
+            margin-top: -70px; /* Adjust the negative margin to shift the content up */
+        }
+
+    </style>
+
+<header class="header">
+    <!-- <div class="logo">
+        <img src="{% static 'images/logo.jpg' %}" alt="Farm Logo">
+    </div> -->
+    <nav class="navigation">
+        <ul>
+            <li>
+                <a href="{% url 'home' %}">Home</a>
+            </li>
+            <li>
+                <a href="#">Products</a>
+            </li>
+
+            <li>
+                <a href="{% url 'about' %}">About</a>
+            </li>
+
+            <li>
+                <a href="#">Blog</a></li>
+            <li>
+                <a href="{% url 'contact' %}">Contact</a></li>
+            <li>
+                <a href="{% url 'livestock-Dashboard' %}">Dashboard</a>
+            </li>
+
+
+        </ul>
+    </nav>
+    <div class="clicks">
+        <button id="login">Login</button>
+        <button id="logout">Logout</button>
+    </div>
+</header>
+
+<body>    
+    <div class="card-container">
+                <div class="card1">
+                    <div class="chart">
+                        <canvas id="livestockChart" style="width: 99%;" height="240"></canvas>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <table>
+                        <a href="{% url 'create-livestock' %}"class="button1">create</a>
+                        <tr>
+                            <th>Name</th>
+                            <th>Species</th>
+                            <th>Breed</th>
+                            <th>D.O.B</th>
+                            <th>Gender</th>
+                            <th>Health Status</th>
+                            <th>Vacc Records</th>
+                            <th>Sire</th>
+                            <th>Dam</th>
+                            <th>Action</th>
+                        </tr>
+
+                        {% for livestock in livestock|slice:"-3:" %}
+                            <tr>
+                                <td>{{ livestock.name }}</td>
+                                <td>{{ livestock.species }}</td>
+                                <td>{{ livestock.breed }}</td>
+                                <td>{{ livestock.date_of_birth }}</td>
+                                <td>{{ livestock.gender }}</td>
+                                <td>{{ livestock.health_status }}</td>
+                                <td>{{ livestock.vaccination_records }}</td>
+                                <td>{{ livestock.sire }}</td>
+                                <td>{{ livestock.dam }}</td>
+                                <td><a href="{% url 'update-livestock' livestock.id %}"class="button">Update</a></td>
+                            </tr>
+                        {% empty %}
+                            <tr>
+                                <td colspan="11">No livestock available.</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                
+    
+    </div>
+    <button id="{% url 'home'  %}">home</button>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Retrieve data from the server using AJAX
+            fetch("{% url 'livestock-chart-data' %}")
+                .then(response => response.json())
+                .then(data => {
+                    // Create the chart
+                    var ctx = document.getElementById('livestockChart').getContext('2d');
+                    var livestockChart = new Chart(ctx, {
+                        type: 'bar',  // You can choose the chart type (bar, line, pie, etc.)
+                        data: {
+                            labels: data.labels,
+                            datasets: [{
+                                label: 'Age in Months',
+                                data: data.data,
+                                backgroundColor: [
+                                    'rgba(75, 192, 192, 0.6)',
+                                    'rgba(255, 99, 132, 0.6)',
+                                    'rgba(255, 205, 86, 0.6)',
+                                    'rgba(54, 162, 235, 0.6)',
+                                    'rgba(153, 102, 255, 0.6)',
+                                    'rgba(255, 159, 64, 0.6)'
+                                ],  // Chart color
+                                borderColor: 'rgba(255, 255, 255, 1)',  // Border color
+                                borderWidth: 9,
+                            }]
+                        },
+                        options: {
+                            position: 'right',
+                            labels: {
+                                fontSize: 14,
+                                fontFamily: 'Arial',
+
+                            },
+                            // Additional chart options and configurations
+                        }
+                    });
+                });
+        });
+
+    </script>
+    
+
+</body>
+</html>
+
+{% endblock content %}

@@ -1,0 +1,119 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dashboard</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine"> -->
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+<body>
+
+    <div class="container">
+        <!-- <button id="toggleSidebarButton">Toggle Sidebar</button> -->
+        <aside class="sidebar">
+            
+            <div class="logo">
+                <img src="{% static 'images/logo.jpg' %}" alt="Farm Logo">
+            </div>
+            
+            <button id="toggleSidebarButton">Toggle Sidebar</button>
+
+            <h2>Farm Management</h2>
+                <ul>
+                    <li>
+                        <span class="material-icons">dashboard</span>
+                        <a href="{% url 'home' %}">Dashboard</a>
+                    </li>
+
+                    <li>
+                        <span class="material-icons">terrain</span>
+                        <a href="#">Fields</a>
+                    </li>
+
+                    <li>
+                        <span class="material-icons">local_florist</span>
+                        <a href="#">Crops</a>
+                    </li>
+                    
+                    <li>
+                        <span class="material-icons">commute</span>
+                        <a href="#">Machines</a>
+                    </li>
+                    
+                    <li>
+                        <span class="material-icons">pets</span>
+                        <a href="{% url 'livestock-Dashboard' %}">Livestock</a>
+                    </li>
+
+                    <li>
+                        <span class="material-icons">inventory_2</span>
+                        <a href="#">Inventory</a>
+                    </li>
+
+                    <li>
+                        <span class="material-icons">analytics</span>
+                        <a href="#">Analysis</a>
+                    </li>
+
+                    <li>
+                        <span class="material-icons">create</span>
+                        <a href="{% url 'create-livestock' %}">Create Livestock</a>
+                    </li>
+
+                    <li>
+                        <span class="material-icons">wb_cloudy</span>
+                        <a href="#">Weaather</a>
+                    </li>
+
+                    <li>
+                        <span class="material-icons">assignment</span>
+                        <a href="#">Task</a>
+                    </li>
+
+                </ul>
+        </aside>
+
+        <main class="contents">
+            {% block content %}
+            {% endblock %} 
+        </main>
+    </div>
+
+
+    <script>
+        // Get the sidebar element by its class name
+        var sidebar = document.querySelector(".sidebar");
+
+        // Function to toggle the sidebar's visibility
+        function toggleSidebar() {
+            if (sidebar.style.display === "none" || sidebar.style.display === "") {
+                sidebar.style.display = "block"; // Show the sidebar
+                toggleSidebarButton.style.position = "absolute"; // Change button positioning
+            } else {
+                sidebar.style.display = "none"; // Hide the sidebar
+                toggleSidebarButton.style.position = "fixed"; // Change button positioning
+            }
+        }
+
+        // Add a click event listener to a button (assuming you have a button to toggle the sidebar)
+        var toggleSidebarButton = document.getElementById("toggleSidebarButton");
+        toggleSidebarButton.addEventListener("click", toggleSidebar);
+
+        // Function to unhide the sidebar
+        function unhideSidebar() {
+            sidebar.style.display = "block"; // Show the sidebar
+        }
+
+        // Add a click event listener to a button (assuming you have a button to unhide the sidebar)
+        var unhideSidebarButton = document.getElementById("unhideSidebarButton");
+        unhideSidebarButton.addEventListener("click", unhideSidebar);
+
+    </script>
+</body>
+
+
+</html>
