@@ -7,8 +7,101 @@
 <title>Home</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-    <link rel="stylesheet" type="text/css" href="{% static 'styles2.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'C:\Django_projects\djangoenv\Scripts\Greenfarmer\users\static\styles2.css' %}">
+
 </head>
+
+
+<style>
+
+
+
+/* Style the header */
+.header {
+    background-color: #fdfdfd; /* Change the background color to your preference */
+    color: #000000; /* Change the text color to your preference */
+    padding: 30px; /* Add padding for better spacing */
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    height: 3px;
+    
+  }
+.logo, .navigation, .logs {
+    margin-top: -12px;
+}
+
+     /* Style the login and logout buttons */
+    .login { 
+    /* background-color: #007bff; Change the button background color to your preference */
+    /* color: #fff; Change the button text color to your preference */
+    /* border: none; */
+    /* padding: 15px 10px; Adjust padding to your preference */
+    /* cursor: pointer; */
+    margin-left: -9000px; /* Add spacing between buttons */
+    /* max-width: 5%;  */
+    /* margin-top: -12px; */
+    /* flex: 5px; */
+  }
+
+
+
+
+    /* Style the navigation menu */
+    .navigation {
+            padding-left: 300px;
+        }
+
+
+        .navigation ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            margin-top: 10px; /* Adjust the negative margin to shift the content up */
+        }
+        
+        .navigation li {
+            margin-right: 20px; /* Add spacing between menu items */
+            flex: 2;
+        }
+        
+        .navigation a {
+            text-decoration: none;
+            color: #242323; /* Change link text color to your preference */
+            flex: 3;
+            
+        }
+
+        .nav {
+            /* flex: 2; */
+            /* margin-left: -9000px; Add spacing between buttons */
+        }
+        
+        /* Style the login and logout buttons */
+        #login, #logout {
+            background-color: #007bff; /* Change the button background color to your preference */
+            color: #fff; /* Change the button text color to your preference */
+            border: none;
+            padding: 10px 20px; /* Adjust padding to your preference */
+            cursor: pointer;
+            margin-left: 10px; /* Add spacing between buttons */
+            font-size: 12px;
+            text-align: center;
+            /* margin-left: -900px; Add spacing between buttons */
+            /* flex: 1; */
+        }
+        
+
+
+
+        
+        #login:hover, #logout:hover {
+            background-color: #0056b3; /* Change the button background color on hover */
+        }
+</style>
+
+
 <body>
     <header class="header">
         <div class="logo">
@@ -19,27 +112,36 @@
                 <li>
                     <a href="{% url 'home' %}">Home</a>
                 </li>
-                <li>
-                    <a href="#">Products</a>
-                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Products</a>
+                    <div class="dropdown-content">
+                        <!-- Add your product links here -->
+                        <a href="{% url 'livestock-Dashboard' %}">Livestock</a>
+                        <a href="#">Fields</a>
+                        <a href="#">Crops</a>
+                        <a href="#">Machines</a>
+                    </div>
 
                 <li>
                     <a href="{% url 'about' %}">About</a>
                 </li>
 
                 <li>
-                    <a href="#">Blog</a></li>
+                    <a href="{% url 'blog' %}">Blog</a></li>
                 <li>
-                    <a href="{% url 'contact' %}">Contact</a></li>
+                    <a href="{% url 'contact' %}">Contact</a>
+                </li>
                 <li>
-                    <a href="{% url 'livestock-Dashboard' %}">List</a>
+                    <a href="{% url 'forum_index' %}">Forum</a>
                 </li>
 
 
             </ul>
         </nav>
-        <button id="login">Login</button>
-        <button id="logout">Logout</button>
+        <div class = "logs" >
+            <button id="login">Login</button>
+            <button id="logout">Logout</button>
+        </div>
     </header>
 
 

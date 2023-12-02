@@ -8,28 +8,14 @@ from django.contrib.auth.views import LoginView
 # this method defines the post request to create crop from a form
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 class CustomLoginView(LoginView):
     login = 'registration/Login.html'  # Customize the template name
 
 def login_user(request):
     return render(request, 'registration/Login.html', {})
+
+def blog(request):
+    return render(request, 'users/blog.html')
 
 def home(request):
     return render(request, 'users/home.html')
@@ -99,3 +85,8 @@ def dashboard(request):
 
 # Assign users to groups
     User.groups.add(farmer_group)
+
+
+
+def forum(request):
+    return render(request, 'users/forum.html', {'username': request.user.username})

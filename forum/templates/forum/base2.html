@@ -1,0 +1,257 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Home</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'styles2.css' %}"> -->
+</head>
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Style the header */
+.header {
+    background-color: #fdfdfd; /* Change the background color to your preference */
+    color: #000000; /* Change the text color to your preference */
+    padding: 30px; /* Add padding for better spacing */
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    height: 3px;
+    
+  }
+  
+  /* Style the logo */
+  .logo img {
+    max-width: 30%; /* Set a maximum width for the logo */
+  }
+  
+/* Style the navigation menu */ 
+
+.navigation {
+    margin-top: -12px;
+}
+
+  .navigation ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex: 2;
+  }
+  
+  .navigation li {
+    margin-right: 20px; /* Add spacing between menu items */
+  }
+  
+  .navigation a {
+    text-decoration: none;
+    color: #222222; /* Change link text color to your preference */
+  }
+  
+  /* Style the login and logout buttons */
+  #login, #logout {
+    background-color: #007bff; /* Change the button background color to your preference */
+    color: #fff; /* Change the button text color to your preference */
+    border: none;
+    padding: 15px 10px; /* Adjust padding to your preference */
+    cursor: pointer;
+    margin-left: -900px; /* Add spacing between buttons */
+    max-width: 5%; 
+    margin-top: -12px;
+    flex: 5px;
+  }
+  
+  #login:hover, #logout:hover {
+    background-color: #0056b3; /* Change the button background color on hover */
+  }
+  
+  .logout {
+    padding-left: 30px;
+  }
+  /* End of nav */
+
+
+
+  
+.image-frame {
+    position: relative;
+    overflow: hidden;
+    width: 600px;
+    height: 600px;
+    border-radius: 30% 70% 70% 30% / 24% 30% 70% 76% ;
+
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.content{
+    display: flex;
+}
+
+.intro{
+    padding-left: 7%;
+    padding-top: 13%;
+    padding-right: 10%;
+}
+
+.container{
+    padding-left: 5%;
+    padding-top: 5%;
+    padding-right: 5%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0; /* Remove margin and padding to ensure full-width content */
+    padding: 0;
+    background-color: #f0f0f0; /* Background color for the entire page */
+}
+h1 {
+    color: #3E7E52;
+    text-align: center; /* Center-align the heading */
+    margin-top: 20px; /* Add some spacing at the top */
+}
+p {
+    line-height: 1.5;
+    margin: 10px 0; /* Add vertical spacing between paragraphs */
+}
+h2 {
+    color: #3E7E52;
+    margin-top: 20px; /* Add spacing between section headings */
+}
+ul {
+    list-style-type: disc; /* Use disc bullets for lists */
+    padding-left: 20px; /* Add left padding to the list */
+}
+a {
+    color: #0070C0; /* Style links with a different color */
+    text-decoration: none; /* Remove underlines from links */
+}
+a:hover {
+    text-decoration: none; /* Remove underlines from links hover */
+}
+
+
+    /* Add this to your CSS to style the dropdown */
+    .dropdown {
+      display: inline-block;
+  }
+
+  .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+      z-index: 1;
+  }
+
+  .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+  }
+
+  .dropdown-content a:hover {
+      background-color: #f1f1f1;
+  }
+
+  .dropdown:hover .dropdown-content {
+      display: block;
+  }
+</style>
+
+
+
+
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="{% static 'images/logo.jpg' %}" alt="Farm Logo">
+        </div>
+        <nav class="navigation">
+            <ul>
+                <li>
+                    <a href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Products</a>
+                    <div class="dropdown-content">
+                        <!-- Add your product links here -->
+                        <a href="{% url 'livestock-Dashboard' %}">Livestock</a>
+                        <a href="#">Fields</a>
+                        <a href="#">Crops</a>
+                        <a href="#">Machines</a>
+                    </div>
+
+                <li>
+                    <a href="{% url 'about' %}">About</a>
+                </li>
+
+                <li>
+                    <a href="{% url 'blog' %}">Blog</a></li>
+                <li>
+                    <a href="{% url 'contact' %}">Contact</a>
+                </li>
+                <li>
+                    <a href="{% url 'forum_index' %}">Forum</a>
+                </li>
+
+
+            </ul>
+        </nav>
+        <button id="login">Login</button>
+        <button id="logout">Logout</button>
+    </header>
+
+
+
+    <main class="contents">
+            {% block content %}
+            {% endblock %} 
+    </main>
+ 
+</body>
+<script>
+
+
+</script>
+
+
+
+</html>

@@ -1,0 +1,67 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Home</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'styles2.css' %}">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="{% static 'images/logo.jpg' %}" alt="Farm Logo">
+        </div>
+        <nav class="navigation">
+            <ul>
+                <li>
+                    <a href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Products</a>
+                    <div class="dropdown-content">
+                        <!-- Add your product links here -->
+                        <a href="{% url 'livestock-Dashboard' %}">Livestock</a>
+                        <a href="#">Fields</a>
+                        <a href="#">Crops</a>
+                        <a href="#">Machines</a>
+                    </div>
+
+                <li>
+                    <a href="{% url 'about' %}">About</a>
+                </li>
+
+                <li>
+                    <a href="{% url 'blog' %}">Blog</a></li>
+                <li>
+                    <a href="{% url 'contact' %}">Contact</a>
+                </li>
+                <li>
+                    <a href="{% url 'forum' %}">Forum</a>
+                </li>
+
+
+            </ul>
+        </nav>
+        <button id="login">Login</button>
+        <button id="logout">Logout</button>
+    </header>
+
+
+
+    <main class="contents">
+            {% block content %}
+            {% endblock %} 
+    </main>
+ 
+</body>
+<script>
+
+
+</script>
+
+
+
+</html>

@@ -1,0 +1,226 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.container {
+    position: relative;
+}
+
+.image-frame {
+    clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
+    position: relative;
+    overflow: hidden;
+    width: 300px;
+    height: 300px;
+}
+
+.img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
+.sidebar {
+    width: 250px; /* Adjust the width as needed */
+    background-color: #333; /* Background color of the sidebar */
+    color: #5a3737; /*Text color
+    padding: 20px; /* Padding inside the sidebar */
+    padding-top: 50px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    flex: 5;
+}
+
+
+
+.logo img {
+    max-width: 40px;
+    height: auto;
+    padding-bottom: 30px;
+}
+
+/* Style for the container */
+.container {
+    display: flex;
+    position: fixed;
+    top: 12%;
+    left: 20%;
+}
+
+
+.contents{
+    padding-left: 500;
+}
+.sidebar h2 {
+    color: #fbfbfb;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    height: 60px;
+    line-height: 60px;
+}
+
+.sidebar ul li {
+    margin: 20px 0;
+    
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #fff;
+    line-height: 60px;
+    height: 60px;
+
+}
+
+.sidebar ul li a:hover {
+    text-decoration: none;
+    color: #867060;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.content {
+    text-align: center;
+    padding: 20px;
+}
+
+.in {
+    font-size: 28px;
+    color: #333;
+}
+
+
+
+
+button#toggleSidebarButton {
+    background-color: #007bff;
+    color: #fff;
+    padding: 5px 10px;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding-left: -20px;
+}
+
+button#toggleSidebarButton:hover {
+    background-color: #0056b3;
+}
+
+h1 {
+    background-color: none;
+    color: #1b1b1b;
+    padding: 10px;
+    text-align: center;
+}
+
+form {
+    width: 50%;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+input[type="text"],
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #555;
+}
+
+
+
+
+ /* CSS for the button */
+.button1 {
+        display: inline-block;
+        padding: 5px 280px;
+        background-color: #007BFF; /* Button background color */
+        color: #fff; /* Button text color */
+        text-decoration: none;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+ }
+
+.button1:hover {
+        background-color: #0056b3; /* Button background color on hover */
+}
+
+        /* CSS for the button */
+.button {
+        display: inline-block;
+        padding: 5px 10px;
+        background-color: #007BFF; /* Button background color */
+        color: #fff; /* Button text color */
+        text-decoration: none;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+}
+
+.button:hover {
+        background-color: #0056b3; /* Button background color on hover */
+} 

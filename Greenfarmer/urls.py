@@ -23,6 +23,9 @@ urlpatterns = [
     path('users/', include('django.contrib.auth.urls')),
     path('', include('Livestocks.urls')),
     path('Livestocks/', include('django.contrib.auth.urls')),
+    path('', include('forum.urls')),
+    path('forum/', include('django.contrib.auth.urls')),
+    path('forum/', include('forum.urls')),
 #path('dashboard/', include('dashboard.urls')),
     # path('users/', include('register.urls')),
 ]

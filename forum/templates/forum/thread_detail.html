@@ -1,0 +1,28 @@
+<!-- forum/templates/forum/thread_detail.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'forum/css/styles.css' %}">
+    <title>{{ thread.title }}</title>
+</head>
+<body>
+
+  <header>
+    <h1>{{ thread.title }}</h1>
+    <p>Created by: {{ thread.creator.username }} at {{ thread.created_at }}</p>
+  </header>
+
+  <div class="post-list">
+    {% for post in posts %}
+      <div class="post-item">
+        <p>{{ post.creator.username }} said:</p>
+        <p>{{ post.content }}</p>
+        <p class="post-info">Posted at: {{ post.created_at }}</p>
+      </div>
+    {% endfor %}
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+<!-- your_template.html -->
+<form method="post" action="{% url 'create_thread' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Create Thread</button>
+</form>

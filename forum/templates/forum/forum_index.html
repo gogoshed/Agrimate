@@ -1,0 +1,58 @@
+<!-- forum/templates/forum/forum_index.html -->
+{% extends 'forum/base2.html' %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="{% static 'forum\static\styles.css' %}"> -->
+    <title>Forum</title>
+</head>
+<body>
+
+  <header>
+    <h1>Forum</h1>
+  </header>
+
+  <title>{{ thread.title }}</title>
+
+  <header>
+    <h1>{{ thread.title }}</h1>
+    <p>Created by: {{ thread.creator.username }} at {{ thread.created_at }}</p>
+  </header>
+
+  
+
+  <div class="container mt-4">
+    <h2>Create a New Post</h2>
+    <p>Replying to: <strong>{{ thread.title }}</strong></p>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+  <form method="post" action="{% url 'create_thread' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Create Thread</button>
+</form>
+
+  <div class="thread-list">
+    {% for thread in threads %}
+      <div class="thread-item">
+        <h2><a href="{% url 'thread_detail' thread.id %}">{{ thread.title }}</a></h2>
+        <p>Created by: {{ thread.creator.username }} at {{ thread.created_at }}</p>
+      </div>
+    {% endfor %}
+  </div>
+
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends 'users/base2.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ubene Globals Farm Blog</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            padding: 20px;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        h1 {
+            color: #3E7E52;
+            border-bottom: 2px solid #3E7E52;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #555;
+        }
+        p {
+            line-height: 1.6;
+            color: #444;
+        }
+        .blog-post {
+            margin-bottom: 40px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 20px;
+        }
+        .blog-post a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        .blog-post a:hover {
+            text-decoration: underline;
+        }
+        .date {
+            font-size: 0.9em;
+            color: #888;
+        }
+        .read-more {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 16px;
+            background-color: #007BFF;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .read-more:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ubene Globals Farm Blog</h1>
+
+    <div class="blog-post">
+        <h2>The Future of Sustainable Agriculture</h2>
+        <p><em>Published on November 7, 2023</em></p>
+        <p>As we look ahead, the role of sustainable agriculture in feeding the growing global population becomes increasingly crucial. In this blog post, we explore the latest trends and technologies shaping the future of farming...</p>
+        <a href="future-of-sustainable-agriculture.html">Read More</a>
+    </div>
+
+    <div class="blog-post">
+        <h2>Smart Farming: Leveraging Technology for Better Yields</h2>
+        <p><em>Published on October 25, 2023</em></p>
+        <p>Discover how smart farming practices and advanced technologies are transforming traditional agriculture. From precision farming to IoT-enabled devices, learn how farmers can optimize their operations...</p>
+        <a href="smart-farming-technology.html">Read More</a>
+    </div>
+
+    <!-- Add more blog posts as needed -->
+
+    <p>Stay tuned for more insightful articles on agriculture, farm management, and sustainable practices. If you have any specific topics you'd like us to cover, feel free to <a href="contact.html">contact us</a>.</p>
+
+    <p><a href="index.html">Back to Home</a></p>
+</body>
+</html>
+{% endblock %}
